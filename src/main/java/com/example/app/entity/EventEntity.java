@@ -5,14 +5,12 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Entity
-@Table(name = "categories")
+@Table(name = "events")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class CategoryEntity {
+public class EventEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,10 +19,12 @@ public class CategoryEntity {
     @Column(name = "name")
     private String name;
 
-    @OneToMany(mappedBy = "category")
-    private List<EventEntity> events;
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private CategoryEntity category;
 
-    public CategoryEntity(String name) {
+    public EventEntity(String name, CategoryEntity category) {
         this.name = name;
+        this.category = category;
     }
 }
