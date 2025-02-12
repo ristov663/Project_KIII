@@ -8,9 +8,3 @@ WORKDIR /app
 COPY --from=builder /app/target/app-0.0.1-SNAPSHOT.jar /app/app.jar
 EXPOSE 8080
 CMD ["java", "-jar", "/app/app.jar"]
-
-# FROM eclipse-temurin:18-jdk
-# WORKDIR /app
-# COPY target/app-0.0.1-SNAPSHOT.jar /app/app.jar
-# EXPOSE 8080
-# CMD ["java", "-jar", "/app/app.jar"]
